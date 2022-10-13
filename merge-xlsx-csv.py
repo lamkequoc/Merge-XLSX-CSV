@@ -23,14 +23,14 @@ if files_directory != '': #if merged file directory is selected then:
                     df = pd.concat([pd.read_excel(a) for a in all_files])                                                  
                     df.to_excel((merged_files), index=False) #save .xlsx to same location            
                 elif files_extension[1].lower() in str(all_files).lower() and hdmsg == 'yes':
-                    df = pd.concat([pd.read_csv(a, sep=',') for a in all_files])                    
+                    df = pd.concat([pd.read_csv(a, sep=',', encoding='latin1') for a in all_files])                    
                     df.to_csv((merged_files), index=False) #save .csv to same location     
                 #If files without header:
                 elif files_extension[0].lower() in str(all_files).lower() and hdmsg == 'no':
                     df = pd.concat([pd.read_excel(a, header=None) for a in all_files],ignore_index=True)                                                  
                     df.to_excel((merged_files), header=False, index=False) #save .xlsx to same location            
                 elif files_extension[1].lower() in str(all_files).lower() and hdmsg == 'no':
-                    df = pd.concat([pd.read_csv(a, header=None, sep=',') for a in all_files], ignore_index=True)                    
+                    df = pd.concat([pd.read_csv(a, header=None, sep=',', encoding='latin1') for a in all_files], ignore_index=True)                    
                     df.to_csv((merged_files), header=False, index=False) #save .csv to same location            
                 else: 
                     pass            
